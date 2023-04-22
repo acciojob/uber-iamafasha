@@ -1,4 +1,5 @@
 package com.driver.controllers;
+
 import com.driver.model.Customer;
 import com.driver.model.TripBooking;
 import com.driver.services.CustomerService;
@@ -13,6 +14,7 @@ public class CustomerController {
 
 	@Autowired
 	CustomerService customerService;
+
 	@PostMapping("/register")
 	public ResponseEntity<Void> registerCustomer(@RequestBody Customer customer){
 		customerService.register(customer);

@@ -15,34 +15,37 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminController {
 
-    @Autowired
-    AdminService adminService;
-    @PostMapping("/register")
-    public ResponseEntity<Void> registerAdmin(@RequestBody Admin admin){
-       adminService.adminRegister(admin);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
+	@Autowired
+	AdminService adminService;
 
-    @PutMapping("/update")
-    public ResponseEntity<Admin> updateAdminPassword(@RequestParam Integer adminId, @RequestParam String password){
-      Admin updatedAdmin =adminService.updatePassword(adminId,password);
-        return new ResponseEntity<>(updatedAdmin, HttpStatus.OK);
-    }
+	@PostMapping("/register")
+	public ResponseEntity<Void> registerAdmin(@RequestBody Admin admin){
+		adminService.adminRegister(admin);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 
-    @DeleteMapping("/delete")
-    public void deleteAdmin(@RequestParam Integer adminId){
-        adminService.deleteAdmin(adminId);
-    }
+	@PutMapping("/update")
+	public ResponseEntity<Admin> updateAdminPassword(@RequestParam Integer adminId, @RequestParam String password){
+		Admin updatedAdmin = adminService.updatePassword(adminId, password);
+		return new ResponseEntity<>(updatedAdmin, HttpStatus.OK);
+	}
 
-    @GetMapping("/listOfCustomers")
-    public List<Customer> listOfCustomers() {
-        List<Customer>listOfCustomers=adminService.getListOfCustomers();
-        return listOfCustomers;
-    }
+	@DeleteMapping("/delete")
+	public void deleteAdmin(@RequestParam Integer adminId){
+		adminService.deleteAdmin(adminId);
+	}
 
-    @GetMapping("/listOfDrivers")
-    public List<Driver> listOfDrivers() {
-        List<Driver>listOfDrivers=adminService.getListOfDrivers();
-        return listOfDrivers;
-    }
+	@GetMapping("/listOfCustomers")
+	public List<Customer> listOfCustomers() {
+		List<Customer> listOfCustomers = adminService.getListOfCustomers();
+
+		return listOfCustomers;
+	}
+
+	@GetMapping("/listOfDrivers")
+	public List<Driver> listOfDrivers() {
+		List<Driver> listOfDrivers = adminService.getListOfDrivers();
+
+		return listOfDrivers;
+	}
 }
